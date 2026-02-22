@@ -1,0 +1,230 @@
+/* =========================
+ROOT VARIABLES
+========================*/
+
+:root{
+--bg:#0a0f14;
+--text:#e8f1f2;
+--accent:#00ff9d;
+--accent-soft:rgba(0,255,157,0.18);
+--card-border:rgba(255,255,255,0.10);
+--radius:14px;
+--transition:250ms ease;
+--shadow:0 12px 28px rgba(0,0,0,0.45);
+--max-width:900px;
+--mobile-break:720px;
+}
+
+/* =========================
+GLOBAL RESET + LAYOUT
+========================*/
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+
+body{
+font-family:"Inter", Arial, sans-serif;
+color:var(--text);
+background-image:url("shamrockbackground.PNG");
+background-repeat:repeat;
+background-size:180px 180px;
+background-position:center;
+line-height:1.6;
+-webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale;
+display:grid;
+place-items:center;
+padding:24px;
+background-color:var(--bg);
+}
+
+/* page wrapper */
+.page-wrap{width:100%;max-width:var(--max-width);margin:0 auto;padding:18px}
+.container{display:flex;flex-direction:column;gap:18px}
+
+/* =========================
+HEADER
+========================*/
+
+.site-header{ text-align:center;padding:20px 12px; }
+
+.site-header img{
+width:140px;height:140px;border-radius:50%;
+border:4px solid var(--accent);object-fit:cover;margin:0 auto 12px;
+box-shadow:0 0 20px rgba(0,255,157,0.25);transform:translateZ(0);
+}
+
+.site-header h1{font-size:2rem;font-weight:700;margin-bottom:6px}
+.site-header p{font-size:1rem;opacity:0.9}
+
+/* =========================
+CARD / BOX
+========================*/
+
+.card{
+background:linear-gradient(45deg,#000000 0%,#003b1f 100%);
+padding:28px;border-radius:var(--radius);
+border:1px solid var(--card-border);
+box-shadow:var(--shadow);
+transition:transform var(--transition),box-shadow var(--transition),opacity var(--transition);
+will-change:transform,opacity;overflow:hidden;
+}
+
+.card:hover{transform:translateY(-8px);box-shadow:0 20px 40px var(--accent-soft)}
+
+.card h2{color:var(--accent);margin-bottom:12px;font-size:1.4rem}
+.card ul{margin-left:20px;margin-top:10px}
+.card li{margin-bottom:8px}
+
+table{width:100%;border-collapse:collapse;margin-top:12px}
+th,td{padding:10px;border-bottom:1px solid var(--card-border)}
+th{color:var(--accent);text-align:left}
+
+/* =========================
+SOFTWARE PROJECTS + EDUCATION FLEX LAYOUT
+=========================*/
+
+.projects-education-wrap {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+#software-projects,
+#education {
+    flex: 1;
+}
+
+/* Stack on mobile */
+@media (max-width: 720px) {
+    .projects-education-wrap {
+        flex-direction: column;
+    }
+}
+
+/* =========================
+FORM BASE
+========================*/
+
+form{display:flex;flex-direction:column;gap:12px}
+
+input,textarea{
+padding:12px;border-radius:12px;border:1px solid var(--card-border);
+background:rgba(255,255,255,0.04);color:var(--text);font-size:1rem;
+transition:box-shadow var(--transition),border-color var(--transition),transform var(--transition);
+}
+
+input:focus,textarea:focus{
+outline:none;box-shadow:0 6px 18px rgba(0,255,157,0.08);border-color:var(--accent);
+transform:translateY(-1px);
+}
+
+/* =========================
+CONTACT FORM LAYOUT & FLOATING LABELS
+========================*/
+
+.contact-form { max-width: 900px; margin: 0 auto; padding: 18px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02)); border-radius: 12px; }
+
+.form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+@media (max-width: var(--mobile-break)) { .form-grid { grid-template-columns: 1fr; } }
+
+.field { position: relative; background: rgba(255,255,255,0.02); border-radius: 10px; padding: 12px; border: 1px solid var(--card-border); transition: box-shadow var(--transition), border-color var(--transition); }
+
+.field input, .field textarea { width: 100%; border: none; background: transparent; color: var(--text); font-size: 1rem; padding: 8px 0 6px; outline: none; }
+
+.field label { position: absolute; left: 14px; top: 12px; color: #9aa4a6; font-size: 13px; pointer-events: none; transition: transform .14s ease, top .14s ease, color .14s ease, font-size .14s ease; }
+
+.field input::placeholder, .field textarea::placeholder { color: transparent; }
+
+/* Float label when focused or filled */
+.field input:focus + label,
+.field textarea:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field textarea:not(:placeholder-shown) + label {
+transform: translateY(-10px) scale(.92);
+top: 6px;
+color: var(--accent);
+font-weight: 700;
+}
+
+/* Textarea full width */
+.field.textarea { grid-column: 1 / -1; }
+.field.textarea textarea { min-height: 120px; resize: vertical; }
+
+/* Fieldset groups */
+.group { grid-column: 1 / -1; display:flex; gap:12px; align-items:center; flex-wrap:wrap; padding:10px; border-radius:10px; border:1px solid var(--card-border); background: rgba(255,255,255,0.02); }
+
+.group legend { font-weight:700; color:var(--accent); margin-right:6px; }
+
+/* Form actions */
+.form-actions { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:12px; flex-wrap:wrap; }
+
+.form-note { color:#9aa4a6; font-size:0.9rem; margin:0; }
+
+/* Neon button */
+.neon-button{
+padding:12px 16px;border-radius:12px;background:var(--accent);color:#000;font-weight:700;
+border:none;cursor:pointer;transition:transform var(--transition),opacity var(--transition);
+box-shadow:0 8px 20px rgba(0,255,157,0.12);
+}
+
+.neon-button:hover{opacity:0.95;transform:translateY(-2px)}
+.neon-button:disabled { opacity:0.6; cursor:not-allowed; transform:none; box-shadow:none; }
+
+/* success state for button */
+.neon-button.success{
+background:linear-gradient(90deg,#00e08a,#00ff9d);
+box-shadow:0 12px 30px rgba(0,255,157,0.22);
+animation:btnSuccess 600ms ease forwards;
+}
+
+@keyframes btnSuccess{ 0%{transform:scale(1);opacity:1} 50%{transform:scale(0.98) rotate(-2deg)} 100%{transform:scale(1);opacity:1} }
+
+/* =========================
+TOAST / SUCCESS MESSAGE
+========================*/
+
+.toast{
+position:fixed;left:50%;transform:translateX(-50%) translateY(18px);
+bottom:18px;display:flex;align-items:center;gap:12px;padding:12px 16px;
+background:linear-gradient(180deg,rgba(0,0,0,0.6),rgba(0,0,0,0.45));
+color:var(--text);border-radius:12px;border:1px solid var(--card-border);
+box-shadow:0 10px 30px rgba(0,0,0,0.5);opacity:0;pointer-events:none;
+transition:opacity 300ms var(--transition),transform 300ms var(--transition);z-index:1200;
+}
+
+.toast.show{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+
+.toast__icon{display:inline-flex;width:36px;height:36px;border-radius:50%;align-items:center;justify-content:center;background:var(--accent);color:#000;font-weight:700}
+
+.toast__text{font-size:0.95rem}
+
+/* =========================
+REVEAL ANIMATIONS
+========================*/
+
+.reveal{opacity:0;transform:translateY(12px);transition:opacity 520ms ease,transform 520ms ease}
+.reveal.is-visible{opacity:1;transform:none}
+
+/* LINKS + FOOTER */
+a{color:var(--accent);text-decoration:none;transition:opacity 160ms ease}
+a:hover{opacity:0.8}
+
+footer{text-align:center;margin-top:28px;padding:18px;opacity:0.85}
+
+/* RESPONSIVE */
+@media (max-width:720px){
+:root{--radius:12px}
+.page-wrap{padding:12px}
+.card{padding:18px}
+.site-header img{width:110px;height:110px}
+.site-header h1{font-size:1.6rem}
+.neon-button{padding:12px;font-size:0.95rem}
+.toast{left:12px;right:12px;transform:none;bottom:12px}
+.card{box-shadow:0 8px 18px rgba(0,0,0,0.45)}
+}
+
+/* Screen-reader only helper */
+.sr-only { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
